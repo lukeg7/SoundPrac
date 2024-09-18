@@ -16,11 +16,8 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
 
-    - name: Build with Gradle/Maven
-      run: |
-        ./gradlew build # For Gradle
-        # mvn -B package --file pom.xml # For Maven
-        
+    - name: Compile Java
+      run: javac -d out $(find . -name "*.java")
+    
     - name: Run Java application
-      run: |
-        java -cp . soundUser
+      run: java -cp out soundUser
